@@ -1,0 +1,139 @@
+<ion-content>
+  <ion-grid class="ion-no-padding main-wrapper">
+    <ion-row class="ion-no-padding">
+      <ion-col size="6" class="left-content">
+        <div class="full-wided-container">
+          <div class="inner-view">
+            <div class="logo-title">
+              <ion-img src="../../assets/icon/school-logo.png"></ion-img>
+              <p>Genius International School</p>
+            </div>
+            <div *ngIf="!isAllowPass">
+              <!-- form content -->
+              <div class=" form-content">
+                <div class="inner-view-form-content">
+                  <div class="title-content">
+                    <h1>Welcome Back </h1>
+                    <p>Welcome Back, Please enter your details</p>
+                  </div>
+                  <form [formGroup]="form" (ngSubmit)="submitForm()">
+                    <div class="segment-view">
+                      <ion-segment [(ngModel)]="registerTab" [ngModelOptions]="{standalone: true}" [value]="registerTab"
+                        mode="ios">
+                        <ion-segment-button value="signIn">
+                          <ion-label>Sign-In</ion-label>
+                        </ion-segment-button>
+                        <ion-segment-button value="signUp">
+                          <ion-label>Sign-Up</ion-label>
+                        </ion-segment-button>
+                      </ion-segment>
+                    </div>
+                    <div class="login-input">
+                      <ion-item fill="outline" class="textbox" style="--border-radius: 8px; margin-bottom: 10px;">
+                        <ion-label position="floating">Email Address</ion-label>
+                        <ion-input type="email" formControlName="email" [(ngModel)]="loginData.email"
+                          name="email"></ion-input>
+                      </ion-item>
+                      <div *ngIf="formSubmtted && f['email']?.errors" class="invalid-feedback">
+                        <ion-note class="login-error-note" *ngIf="f['email'].errors?.['required']">
+                          Email is required
+                        </ion-note>
+                        <ion-note class="login-error-note" *ngIf="f['email'].errors?.['email']">
+                          Email is not valid
+                        </ion-note>
+                      </div>
+                    </div>
+                    <!-- sign-up -->
+                    <div *ngIf="registerTab == 'signUp'" style="margin-top: 14px;">
+                      <ion-item fill="outline" class="textbox">
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input [type]="passwordVisible ? 'text' : 'password'" #showpassword></ion-input>
+                        <ion-icon name="eye-outline" slot="end" (mousedown)="showPassword($event)"
+                          (mouseup)="hidePassword($event)" (touchstart)="showPassword($event)"
+                          (touchend)="hidePassword($event)"></ion-icon>
+                      </ion-item>
+                    </div>
+                    <div class="login-submit">
+                      <ion-buttons slot="secondary">
+                        <ion-button type="submit" fill="solid" style="width: 100%;">
+                          Continue
+                        </ion-button>
+                      </ion-buttons>
+                    </div>
+                  </form>
+                  <div *ngIf="registerTab != 'signUp'">
+                    <div class="line-text">
+                      <div class="headline">
+                        <p>Or Continue With</p>
+                      </div>
+                    </div>
+                    <div class="form-footer">
+                      <div>
+                        <p>G</p>
+                      </div>
+                      <div>
+                        <p>F</p>
+                      </div>
+                      <div>
+                        <p>A</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- footer view -->
+              <div class="footer-info">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore eaque, maxime enim libero
+                  soluta
+                  similique. Ea, voluptates consequuntur impedit voluptatibus expedita doloremque. Corporis,
+                  reprehenderit
+                  ipsam totam non ratione veritatis recusandae?</p>
+              </div>
+            </div>
+            <!-- pass -->
+            <div class="pass-wrapper" *ngIf="isAllowPass">
+              <div class="pass-container">
+                <div>
+                  <h1>Enter Your Password</h1>
+                  <div class="login-input">
+                    <ion-item fill="outline" class="textbox-stacked" lines="none">
+                      <ion-label>{{loginData.email}}</ion-label>
+                      <ion-button slot="end" fill="clear"
+                        style="margin-right: 5px; color: #10a37f; margin-left: 0px; margin-top: 6px;"
+                        (click)="isAllowPass = false">Edit</ion-button>
+                    </ion-item>
+                  </div>
+                  <div class="pass-input">
+                    <ion-item fill="outline" class="textbox">
+                      <ion-label position="floating">Password</ion-label>
+                      <ion-input [type]="passwordVisible ? 'text' : 'password'" #showpassword></ion-input>
+                      <ion-icon name="eye-outline" slot="end" (mousedown)="showPassword($event)"
+                        (mouseup)="hidePassword($event)" (touchstart)="showPassword($event)"
+                        (touchend)="hidePassword($event)"></ion-icon>
+                    </ion-item>
+                  </div>
+                  <div class="forgot-para">
+                    <p> Forgot Password? </p>
+                  </div>
+                  <div class="recofirm-pass">
+                    <ion-buttons slot="secondary">
+                      <ion-button fill="solid" style="width: 100%;">
+                        Continue
+                      </ion-button>
+                    </ion-buttons>
+                  </div>
+                  <div class="footer-wrapper">
+                    <p>Dont have an account? <span>Sign Up</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="6" class="bg1">
+        <p>dsa</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
