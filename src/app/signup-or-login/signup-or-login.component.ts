@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms'
 })
 export class SignupOrLoginComponent implements OnInit {
 
-  isAllowPass = true;
+  isAllowPass = false;
 
   loginData: any = {};
 
